@@ -1,6 +1,7 @@
 package com;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -17,7 +18,7 @@ public class Order {
     private final Customer client;
     private final List<OrderItem> items;
     private Money totalCost;
-    private Timestamp approvalDate;
+    private LocalDate approvalDate;
     private OrderStatus status;
 
 
@@ -49,7 +50,7 @@ public class Order {
         isOpen();
 
         status = OrderStatus.APPROVED;
-        approvalDate = new Timestamp(System.currentTimeMillis());
+        approvalDate = LocalDate.now();
     }
 
     private void isOpen() {
@@ -92,7 +93,7 @@ public class Order {
         return Collections.unmodifiableList(result);
     }
 
-    public Date getApprovalDate() {
+    public LocalDate getApprovalDate() {
         return approvalDate;
     }
 
